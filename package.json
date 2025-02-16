@@ -1,0 +1,31 @@
+{
+  "name": "magicformshadcn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adilelkhalloufi/MagicFormShadcn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adilelkhalloufi/MagicFormShadcn/issues"
+  },
+  "homepage": "https://github.com/adilelkhalloufi/MagicFormShadcn#readme",
+  "description": "",
+  "dependencies": {
+    "@shadcn/ui": "^0.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.9",
+    "@types/react-dom": "^19.0.3",
+    "typescript": "^5.7.3"
+  }
+}
