@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
-import { Button } from "@shadcn/ui/button";
-import { Input } from '@shadcn/ui';
-import { Label } from "@shadcn/ui/label";
-import { Card, CardContent } from "@shadcn/ui/card";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@shadcn/ui/select";
+ 
 
 
-export interface optionMagicFormProps {
+export interface MagicFormOptionProps {
     value: string;
     label: string;
 }
 
-export interface FieldMagicForm {
+export interface MagicFormFields {
     name: string;
     label?: string;
     error?: string;
     type: "checkbox" | "select" | "text" | "textarea" | "radio" | "image" | "number";
     required?: boolean;
     order?: number;
-    options?: optionMagicFormProps[];
+    options?: MagicFormOptionProps[];
     optionPlaceHolder?: string;
     group?: number;
     groupTitle?: string;
 }
 
 interface MagicFormProps {
-    fields: FieldMagicForm[];
+    fields: MagicFormFields[];
     onSubmit: (data: any) => void;
     title?: string;
     button?: string;
@@ -92,7 +88,7 @@ const MagicForm = ({ fields, onSubmit, title = "Form", button = "Submit", layout
                         <CardContent>
                             {title && <h3 className="text-lg font-bold mb-2">{title}</h3>}
                             <div className="grid grid-cols-1   gap-4">
-                                {groupFields.map(({ name, label, type, options, optionPlaceHolder = "Select" }: FieldMagicForm) => (
+                                {groupFields.map(({ name, label, type, options, optionPlaceHolder = "Select" }: MagicFormFields) => (
                                     <div key={name} className="mb-4">
                                         <Label>{label}</Label>
                                         {type === "select" ? (
@@ -102,7 +98,7 @@ const MagicForm = ({ fields, onSubmit, title = "Form", button = "Submit", layout
                                                 </SelectTrigger>
                                                 <SelectContent>
                                                     <SelectGroup>
-                                                        {options?.map(({ label, value }: optionMagicFormProps) => (
+                                                        {options?.map(({ label, value }: MagicFormOptionProps) => (
                                                             <SelectItem key={value} value={value}>
                                                                 {label}
                                                             </SelectItem>
