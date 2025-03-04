@@ -26,13 +26,13 @@ export interface MagicFormFieldProps {
   required?: boolean;
   order?: number;
   options?: MagicFormOptionProps[];
-  placeholder?: string; // Add this line
-  group?: string; // Updated to string
+  placeholder?: string;  
+  group?: string;  
   groupTitle?: string;
   autocomplete?: boolean;
   width?: "full" | "half" | "third" | "auto";
-  columns?: MagicFormFieldProps[]; // For table type
-  disabled?: boolean; // Add this line
+  columns?: MagicFormFieldProps[];  
+  disabled?: boolean;  
 }
 
 export interface MagicFormGroupProps {
