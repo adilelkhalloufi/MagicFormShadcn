@@ -25,31 +25,39 @@ import MagicForm from "magic-form";
 ```tsx
 const fields = [
   {
-    name: "username",
-    label: "Username",
-    type: "text",
-    required: true,
-  },
-  {
-    name: "age",
-    label: "Age",
-    type: "number",
-    required: true,
-  },
-  {
-    name: "profile_picture",
-    label: "Profile Picture",
-    type: "image",
-  },
-  {
-    name: "gender",
-    label: "Gender",
-    type: "select",
-    options: [
-      { label: "Male", value: "male" },
-      { label: "Female", value: "female" },
+    group: "User Information",
+    fields: [
+      {
+        name: "username",
+        label: "Username",
+        type: "text",
+        required: true,
+      },
+      {
+        name: "age",
+        label: "Age",
+        type: "number",
+        required: true,
+      },
+      {
+        name: "profile_picture",
+        label: "Profile Picture",
+        type: "image",
+      },
+      {
+        name: "gender",
+        label: "Gender",
+        type: "select",
+        options: [
+          { name: "Male", value: "male" },
+          { name: "Female", value: "female" },
+        ],
+        placeholder: "Select gender",
+      },
     ],
-    optionPlaceHolder: "Select gender",
+    layout: { type: "vertical" },
+    position: { row: 1, column: 1, width: "full" },
+    card: true,
   },
 ];
 
@@ -62,7 +70,6 @@ const handleSubmit = (data) => {
   onSubmit={handleSubmit}
   title="Registration Form"
   button="Submit"
-  layout="column"
 />;
 ```
 
@@ -70,18 +77,42 @@ const handleSubmit = (data) => {
 
 ### `fields` (required)
 
-An array of objects defining the form fields.
+An array of objects defining the form groups and fields.
 
-| Property          | Type                                                                             | Description                         |
-| ----------------- | -------------------------------------------------------------------------------- | ----------------------------------- |
-| name              | string                                                                           | Field name (unique key)             |
-| label             | string                                                                           | Displayed label (optional)          |
-| type              | "checkbox" \| "select" \| "text" \| "textarea" \| "radio" \| "image" \| "number" | Field type                          |
-| required          | boolean                                                                          | Defines if the field is required    |
-| options           | Array<{ label: string, value: string }>                                          | Options list for select fields      |
-| optionPlaceHolder | string                                                                           | Placeholder text for a select field |
-| group             | number                                                                           | Field group (optional)              |
-| groupTitle        | string                                                                           | Group title (optional)              |
+#### MagicFormGroupProps
+
+| Property | Type                                                                              | Description                                                |
+| -------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| group    | string                                                                            | Group name/title                                           |
+| fields   | MagicFormFieldProps[]                                                             | Array of field definitions                                 |
+| layout   | { type: "horizontal" \| "vertical" \| "grid"; columns?: 1 \| 2 \| 3 \| 4 }        | Layout type and optional number of columns for grid layout |
+| position | { row: number; column: number; width?: "full" \| "half" \| "third" \| "quarter" } | Positioning of the group within the form                   |
+| card     | boolean                                                                           | Whether to wrap the group in a card component              |
+
+#### MagicFormFieldProps
+
+| Property     | Type                                                                                                  | Description                            |
+| ------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| name         | string                                                                                                | Field name (unique key)                |
+| label        | string                                                                                                | Displayed label (optional)             |
+| error        | string                                                                                                | Custom error message (optional)        |
+| value        | any                                                                                                   | Initial value (optional)               |
+| type         | "checkbox" \| "select" \| "text" \| "textarea" \| "radio" \| "image" \| "number" \| "date" \| "table" | Field type                             |
+| required     | boolean                                                                                               | Defines if the field is required       |
+| order        | number                                                                                                | Order of the field within the group    |
+| options      | MagicFormOptionProps[]                                                                                | Options list for select fields         |
+| placeholder  | string                                                                                                | Placeholder text for the field         |
+| autocomplete | boolean                                                                                               | Enables autocomplete for select fields |
+| width        | "full" \| "half" \| "third" \| "auto"                                                                 | Width of the field                     |
+| columns      | MagicFormFieldProps[]                                                                                 | Column definitions for table fields    |
+| disabled     | boolean                                                                                               | Disables the field                     |
+
+#### MagicFormOptionProps
+
+| Property | Type   | Description         |
+| -------- | ------ | ------------------- |
+| value    | any    | Option value        |
+| name     | string | Option display name |
 
 ### `onSubmit` (required)
 
@@ -95,20 +126,28 @@ Form title (default: "Form").
 
 Submit button text (default: "Submit").
 
-### `layout` (optional)
+### `initialValues` (optional)
 
-Defines the field display layout:
+Initial values for the form fields.
 
-- `column` (default): Column display
-- `row`: Row display
-- `grid-2`: 2-column grid display
+### `loading` (optional)
+
+Boolean indicating if the form is in a loading state.
+
+### `modal` (optional)
+
+Boolean indicating if the form should be displayed in a modal.
+
+### `onClose` (optional)
+
+Function called when the modal is closed.
 
 ## Features
 
-✅ Dynamic field generation
-✅ Supports text, number, image, select, checkbox, radio, and textarea fields
-✅ Error handling and required field validation
-✅ Image preview for uploaded files
+✅ Dynamic field generation  
+✅ Supports text, number, image, select, checkbox, radio, and textarea fields  
+✅ Error handling and required field validation  
+✅ Image preview for uploaded files  
 ✅ Field grouping capability
 
 ## ShadCN UI Integration

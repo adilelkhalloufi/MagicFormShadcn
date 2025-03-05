@@ -27,8 +27,6 @@ export interface MagicFormFieldProps {
   order?: number;
   options?: MagicFormOptionProps[];
   placeholder?: string;  
-  group?: string;  
-  groupTitle?: string;
   autocomplete?: boolean;
   width?: "full" | "half" | "third" | "auto";
   columns?: MagicFormFieldProps[];  
