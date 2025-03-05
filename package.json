@@ -1,23 +1,33 @@
 {
   "name": "magicformshadcn",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A dynamic React component for generating configurable forms.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adilelkhalloufi/MagicFormShadcn.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "react",
+    "form",
+    "dynamic",
+    "configurable",
+    "shadcn",
+    "ui"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/adilelkhalloufi/MagicFormShadcn/issues"
   },
   "homepage": "https://github.com/adilelkhalloufi/MagicFormShadcn#readme",
-  "description": "",
   "dependencies": {
     "@shadcn/ui": "^0.0.4",
     "@radix-ui/react-accordion": "^1.2.3",
@@ -37,16 +47,19 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@tabler/icons-react": "^3.2.0",
     "lucide-react": "^0.462.0",
-
-    "@radix-ui/react-tooltip": "^1.0.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.9",
     "@types/react-dom": "^19.0.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "jest": "^27.0.6",
+    "@types/jest": "^27.0.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0"
   }
 }
